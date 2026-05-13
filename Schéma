@@ -1,0 +1,8 @@
+/
+├── index.html      (corrigé)
+├── app.js          (avec toutes les fonctions)
+├── style.css       (corrigé)
+├── sw.js           (version v8.0)
+├── manifest.json   (correct)
+├── logo.png        (icône)
+└── icon.png        (icône PWA)
