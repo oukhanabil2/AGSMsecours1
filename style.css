@@ -1,6 +1,6 @@
 /* ==================== SGA - STYLES COMPLETS V7.0 ==================== */
 /* Variables pour les couleurs */
-      //// FINAL 1///////
+      //// FINAL 1 ///////
 :root {
     --bg-dark-blue: #2c3e50;
     --header-blue: #34495e;
@@ -36,6 +36,7 @@
 }
 
 /* ==================== STRUCTURE DE BASE ==================== */
+/* ==================== STRUCTURE DE BASE ==================== */
 * {
     box-sizing: border-box;
 }
@@ -44,7 +45,8 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-dark-blue);
+    background-color: #2c3e50 !important;
+    background: #2c3e50 !important;
     color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -59,7 +61,21 @@ body {
     max-width: 600px;
     margin: 0 auto;
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
-    background-color: var(--bg-dark-blue);
+    background-color: #2c3e50 !important;
+    background: #2c3e50 !important;
+}
+
+#main-content {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: #2c3e50 !important;
+}
+
+.dashboard {
+    padding: 20px;
+    background-color: #2c3e50 !important;
 }
 
 /* ==================== EN-TÊTE ==================== */
