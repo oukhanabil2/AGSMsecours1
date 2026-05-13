@@ -1,0 +1,84 @@
+
+
+<!DOCTYPE html>
+// FINAL 1// 
+<html lang="fr">
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AGSM - Gestion des Agents</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css?v=8.0">
+    <meta name="theme-color" content="#34495e">
+    <meta name="description" content="Système de Gestion des Agents AGSM">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div id="app-container">
+        <!-- EN-TÊTE (styles définis dans style.css) -->
+        <div class="app-header">
+            <div style="display:flex; align-items:center; gap:10px; flex:1;">
+                <img src="logo.png" alt="Logo AGSM" style="height:45px; width:auto; border-radius:8px;">
+                <div>
+                    <h1 style="margin:0; font-size:1.2rem;">🏢 AGSM - Groupe ASW</h1>
+                    <div id="sub-title" style="font-size:0.8rem; margin-top:4px;">Système de Gestion des Agents</div>
+                </div>
+            </div>
+            <div class="header-notification" id="headerNotification">
+                <span style="font-size:1.5rem;">🔔</span>
+                <span id="notificationBadge" class="notification-badge">0</span>
+            </div>
+        </div>
+        
+        <div id="main-content"></div>
+        <div class="app-footer">
+            &copy; 2026 - AGSM Groupe ASW | Gestion des Agents
+        </div>
+    </div>
+    <div id="snackbar"></div>
+    
+    <script src="app.js"></script>
+    <script>
+        // Attendre que app.js soit chargé
+       setTimeout(function() {
+    console.log("Vérification après 2 secondes:");
+    console.log("- typeof showNotificationsPanel:", typeof showNotificationsPanel);
+    console.log("- typeof notifications:", typeof notifications);
+    console.log("- currentUser:", currentUser ? currentUser.username : "null");
+    
+    var notifIcon = document.getElementById('headerNotification');
+    if (notifIcon && typeof showNotificationsPanel === 'function') {
+        // Éviter les doublons d'événements
+        notifIcon.removeEventListener('click', notifIcon._clickHandler);
+        notifIcon._clickHandler = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (typeof showNotificationsPanel === 'function') {
+                showNotificationsPanel();
+            } else {
+                console.error("showNotificationsPanel n'est pas défini");
+            }
+        };
+        notifIcon.addEventListener('click', notifIcon._clickHandler);
+        console.log("✅ Événement notification attaché");
+    } else {
+        console.log("❌ Impossible d'attacher l'événement - fonction non trouvée");
+    }
+}, 2000);
+        
+        // Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('✅ Service Worker enregistré', reg))
+                    .catch(err => console.error('❌ Erreur SW', err));
+            });
+        }
+    </script>
+</body>
+</html>
