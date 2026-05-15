@@ -1,4 +1,4 @@
-// ==================== SGA v8.0 - APPLICATION COMPLÈTE ====================
+// ==================== SGA v8.0 - APPLICATION COMPLÈTE (S1) ====================
 console.log("🚀 SGA v8.0 - Application chargée");
 
 // ==================== PARTIE 1 : CONSTANTES & CONFIGURATION ====================
