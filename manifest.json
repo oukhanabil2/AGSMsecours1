@@ -1,9 +1,7 @@
-// FINAL 1 //
 {
   "short_name": "SGA",
   "name": "Système Gestion Agents",
   "description": "Application de gestion des agents et planning",
-  "lang": "fr",
   "icons": [
     {
       "src": "icon.png",

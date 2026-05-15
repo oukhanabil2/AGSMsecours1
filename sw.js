@@ -1,6 +1,5 @@
 // sw.js - Service Worker pour SGA v8.0
-    // FINAL1 //
-const CACHE_NAME = 'sga-v8.0';
+const CACHE_NAME = 'sga-v1';
 const urlsToCache = [
     './',
     './index.html',
@@ -14,28 +13,9 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', event => {
-    console.log('🔧 Service Worker - Installation');
     event.waitUntil(
         caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache))
     );
-    self.skipWaiting();
-});
-
-self.addEventListener('activate', event => {
-    console.log('🚀 Service Worker - Activation');
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cache => {
-                    if (cache !== CACHE_NAME) {
-                        console.log('🗑️ Ancien cache supprimé:', cache);
-                        return caches.delete(cache);
-                    }
-                })
-            );
-        })
-    );
-    return self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
@@ -44,6 +24,7 @@ self.addEventListener('fetch', event => {
             .then(response => {
                 if (response) return response;
                 return fetch(event.request).catch(() => {
+                    // Si hors ligne et ressource non trouvée, retourne une page d'erreur
                     return new Response('Hors ligne - contenu non disponible', {
                         status: 503,
                         statusText: 'Service Unavailable'
