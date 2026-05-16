@@ -1,5 +1,5 @@
 // ==================== SGA v8.0 - APPLICATION COMPLÈTE ====================
-      //FlNAL1 //
+      //FlNAL1S2 //
 console.log("🚀 SGA v8.0 - Application chargée");
 
 // ==================== PARTIE 1 : CONSTANTES & CONFIGURATION ====================
